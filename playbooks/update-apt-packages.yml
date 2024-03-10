@@ -1,9 +1,9 @@
 ---
-- hosts: all
-
-  become:true
+- name: Update apt package cache
+  hosts: all
+  become: yes # Required to become root
   tasks:
-    - name: update apt packages
-      apt:
-        update: yes
+    - name: Update apt repo cache
+      ansible.builtin.apt:
         update_cache: yes
+        cache_valid_time: 3600 # Cache valid for 1 hour to avoid updating the cache too frequently
