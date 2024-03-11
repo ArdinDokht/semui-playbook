@@ -2,6 +2,8 @@
 - name: Update apt package cache
   hosts: all
   become: yes # Required to become root
+  become_user: ubuntu
+
   tasks:
     - name: Update apt repo cache
       ansible.builtin.apt:
