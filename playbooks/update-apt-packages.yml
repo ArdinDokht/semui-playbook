@@ -1,11 +1,9 @@
 ---
 - name: Update apt package cache
   hosts: all
-  become: yes # Required to become root
-  become_user: ubuntu
-
+  become: yes  # This escalates privileges using sudo by default
   tasks:
     - name: Update apt repo cache
       ansible.builtin.apt:
         update_cache: yes
-        cache_valid_time: 3600 # Cache valid for 1 hour to avoid updating the cache too frequently
+        cache_valid_time: 3600 # Cache valid for 1 hour
